@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="conver.css">
+    <title>Conversão de Fahrenheit</title>
+    <script>
+
+        const tempe = {
+            Celsius(y){
+                return (y - 32)/1.8
+            },
+            Fahrenheit(y){
+                return (y*1.8)+32
+            }
+        } 
+
+        let js_valid
+        var js_if
+        js_if = 0
+        js_valid = 'direita'
+
+        function calc(){
+            var js_valor = document.getElementById('valor').value
+            var js_temp1 = document.getElementById('temp1').value
+            var js_temp2 = document.getElementById('temp2').value
+            switch (js_valid) {
+                case 'direita':
+                    const calcc = tempe[js_temp2]
+                    document.getElementById('result').value = calcc(js_valor)
+                    break;
+        
+                    case 'esquerda':
+                    const calcc2 = tempe[js_temp1]
+                    document.getElementById('result').value = calcc2(js_valor)
+                        break; 
+                default:
+                    break;
+            }
+        }
+
+        function troca() {
+
+
+            var seta = document.getElementById('seta')
+            switch (js_if) {
+                case 0:
+                    seta.classList.add('setalado');
+                    js_if = 1;
+                    js_valid = 'esquerda';
+                    break;
+
+                case 1:
+                    seta.classList.remove('setalado');
+                    js_if = 0;
+                    js_valid = 'direita';
+                    break;
+            }
+
+        }
+
+        function simblabel() {
+            switch (js_valid) {
+                case 'esquerda':
+                    var simbsig = document.getElementById('temp2').value
+                    simbsig = simbsig.toUpperCase()
+                    if (simbsig == 'CELSIUS') {
+                        document.getElementById('simb').innerHTML = "°C"
+                    }
+                    if (simbsig == 'FAHRENHEIT') {
+                        document.getElementById('simb').innerHTML = "°F"
+                    } if (simbsig == '') {
+                        document.getElementById('simb').innerHTML = "?"
+                    }
+                    break;
+
+                case 'direita':
+                    var simbsig = document.getElementById('temp1').value
+                    simbsig = simbsig.toUpperCase()
+                    if (simbsig == 'CELSIUS') {
+                        document.getElementById('simb').innerHTML = "°C"
+                    }
+                    if (simbsig == 'FAHRENHEIT') {
+                        document.getElementById('simb').innerHTML = "°F"
+                    } if (simbsig == '') {
+                        document.getElementById('simb').innerHTML = "?"
+                    }
+                    break;
+            }
+
+        }
+        function simblabel2() {
+            switch (js_valid) {
+                case 'esquerda':
+                    var simbsig = document.getElementById('temp1').value
+                    simbsig = simbsig.toUpperCase()
+                    if (simbsig == 'CELSIUS') {
+                        document.getElementById('simbres').innerHTML = "°C"
+                    }
+                    if (simbsig == 'FAHRENHEIT') {
+                        document.getElementById('simbres').innerHTML = "°F"
+                    } if (simbsig == '') {
+                        document.getElementById('simb').innerHTML = "?"
+                    }
+                    break;
+
+                case 'direita':
+                    var simbsig = document.getElementById('temp2').value
+                    simbsig = simbsig.toUpperCase()
+                    if (simbsig == 'CELSIUS') {
+                        document.getElementById('simbres').innerHTML = "°C"
+                    }
+                    if (simbsig == 'FAHRENHEIT') {
+                        document.getElementById('simbres').innerHTML = "°F"
+                    } if (simbsig == '') {
+                        document.getElementById('simbres').innerHTML = "?"
+                    }
+                    break;
+            }
+        }
+        function teste() {
+            var num = document.getElementById('rangeva').value
+            alert(num)
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Conversão de Temperatura</h1>
+
+    <form>
+        <input style="width: 50px; margin-left: 80px;" type="number" id="valor" name="valor" oninput="rangeva.value=value" onchange="rangeva.value=value">
+        <label id="simb" for="valor">?</label><br>
+        <input type="range" style="margin-left: 45px;" min="0" max="1000" name="testerange" id="rangeva" oninput="valor.value=value" onchange="valor.value=value"> <br> <br>
+        <select onchange="simblabel();simblabel2()" name="temp1" id="temp1">
+            <option></option>
+            <option>Celsius</option>
+            <option>Fahrenheit</option>
+        </select><img id="seta" src="https://www.pngmart.com/files/16/Black-Left-Arrow-Transparent-Background.png" class="arrow" onclick="troca();simblabel();simblabel2()"><select
+            onchange="simblabel();simblabel2()" class="selectd" name="temp2" id="temp2">
+            <option></option>
+            <option>Celsius</option>
+            <option>Fahrenheit</option>
+        </select>
+        <br> <br>
+        <input id="result" style="width: 50px; margin-left: 80px;" type="number" readonly> <label for="result"
+            id="simbres">?</label>
+            <input type="button" onclick="calc()">
+
+    </form>
+</body>
+
+</html>

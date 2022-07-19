@@ -1,0 +1,21 @@
+.arrow {
+    height: 20px;
+    width: 40px;
+    cursor: pointer;
+    margin-top: -0.3px;
+    margin-left: 2px;
+    position: absolute;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    cursor: pointer;
+}
+
+.setalado {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    cursor: pointer;
+}
+select.selectd{
+    position: relative;
+    margin-left: 44px;
+}
