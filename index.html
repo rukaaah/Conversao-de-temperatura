@@ -79,7 +79,6 @@
                 case 'direita':
                     const calcc = tempe[js_temp2]
                     document.getElementById('result').value = calcc(js_valor, js_temp1)
-                    alert(js_valid)
                     break;
 
                 case 'esquerda':
@@ -121,7 +120,11 @@
                     }
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simb').innerHTML = "°F"
-                    } if (simbsig == '') {
+                    }
+                    if (simbsig == 'KELVIN'){
+                        document.getElementById('simb').innerHTML = "K"
+                    }
+                    if (simbsig == '') {
                         document.getElementById('simb').innerHTML = "?"
                     }
                     break;
@@ -134,7 +137,11 @@
                     }
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simb').innerHTML = "°F"
-                    } if (simbsig == '') {
+                    }
+                    if (simbsig == 'KELVIN'){
+                        document.getElementById('simb').innerHTML = "K"
+                    }
+                    if (simbsig == '') {
                         document.getElementById('simb').innerHTML = "?"
                     }
                     break;
@@ -151,7 +158,11 @@
                     }
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simbres').innerHTML = "°F"
-                    } if (simbsig == '') {
+                    }
+                    if (simbsig == 'KELVIN'){
+                        document.getElementById('simbres').innerHTML = "°K"
+                    }
+                    if (simbsig == '') {
                         document.getElementById('simb').innerHTML = "?"
                     }
                     break;
@@ -164,7 +175,12 @@
                     }
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simbres').innerHTML = "°F"
-                    } if (simbsig == '') {
+                    }
+                    if (simbsig == 'KELVIN'){
+                        document.getElementById('simbres').innerHTML = "°K"
+                    }
+                    
+                    if (simbsig == '') {
                         document.getElementById('simbres').innerHTML = "?"
                     }
                     break;
