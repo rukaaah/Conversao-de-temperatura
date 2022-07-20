@@ -8,38 +8,84 @@
     <link rel="stylesheet" href="conver.css">
     <title>Conversão de Fahrenheit</title>
     <script>
-
-        const tempe = {
-            Celsius(y){
-                return (y - 32)/1.8
-            },
-            Fahrenheit(y){
-                return (y*1.8)+32
-            },
-            Kelvin(y){
-                
-            }
-        } 
-
         let js_valid
         var js_if
         js_if = 0
         js_valid = 'direita'
 
-        function calc(){
+        function calc() {
+            //const para calcular o celsius
+            const calcsc = {
+                Fahrenheit(y) {
+                    return (y - 32) / 1.8
+                },
+                Celsius(y) {
+                    return (y)
+
+                },
+                Kelvin(y) {
+                    y = parseInt(y)
+                    return (y - 273)
+                }
+            }
+            //const para calcular o fahrenheit
+            const calcsf = {
+                Fahrenheit(y) {
+                    return (y)
+                },
+                Celsius(y) {
+                    return (y * 1.8) + 32
+
+                },
+                Kelvin(y) {
+
+                    return (y - 273) * 1.8 + 32
+                }
+            }
+            //const para calcular o kelvin
+            const calcsk = {
+                Fahrenheit(y) {
+                    return ((y - 32) * 5 / 9) + 273
+                },
+                Celsius(y) {
+                    y = parseInt(y)
+                    return (y + 273)
+
+                },
+                Kelvin(y) {
+                    return (y)
+                }
+            }
+            //const para juntar os calculos
+            const tempe = {
+                Celsius(y, z) {
+                    const calculo = calcsc[z]
+                    return (calculo(y))
+                },
+                Fahrenheit(y, z) {
+                    const calculo = calcsf[z]
+                    return (calculo(y))
+                },
+                Kelvin(y, z) {
+                    const calculo = calcsk[z]
+                    return (calculo(y))
+                }
+            }
+            //resto da função
             var js_valor = document.getElementById('valor').value
             var js_temp1 = document.getElementById('temp1').value
             var js_temp2 = document.getElementById('temp2').value
             switch (js_valid) {
                 case 'direita':
                     const calcc = tempe[js_temp2]
-                    document.getElementById('result').value = calcc(js_valor)
+                    document.getElementById('result').value = calcc(js_valor, js_temp1)
+                    alert(js_valid)
                     break;
-        
-                    case 'esquerda':
+
+                case 'esquerda':
                     const calcc2 = tempe[js_temp1]
-                    document.getElementById('result').value = calcc2(js_valor)
-                        break; 
+                    document.getElementById('result').value = calcc2(js_valor, js_temp2)
+                    break;
                 default:
                     break;
             }
@@ -135,23 +181,28 @@
     <h1>Conversão de Temperatura</h1>
 
     <form>
-        <input style="width: 50px; margin-left: 80px;" type="number" id="valor" name="valor" oninput="rangeva.value=value" onchange="rangeva.value=value">
+        <input style="width: 50px; margin-left: 80px;" type="number" id="valor" name="valor"
+            oninput="rangeva.value=value" onchange="rangeva.value=value">
         <label id="simb" for="valor">?</label><br>
-        <input type="range" style="margin-left: 45px;" min="0" max="1000" name="testerange" id="rangeva" oninput="valor.value=value" onchange="valor.value=value"> <br> <br>
+        <input type="range" style="margin-left: 45px;" min="0" max="1000" name="testerange" id="rangeva"
+            oninput="valor.value=value" onchange="valor.value=value"> <br> <br>
         <select onchange="simblabel();simblabel2()" name="temp1" id="temp1">
             <option></option>
             <option>Celsius</option>
             <option>Fahrenheit</option>
-        </select><img id="seta" src="https://www.pngmart.com/files/16/Black-Left-Arrow-Transparent-Background.png" class="arrow" onclick="troca();simblabel();simblabel2()"><select
-            onchange="simblabel();simblabel2()" class="selectd" name="temp2" id="temp2">
+            <option>Kelvin</option>
+        </select><img id="seta" src="https://www.pngmart.com/files/16/Black-Left-Arrow-Transparent-Background.png"
+            class="arrow" onclick="troca();simblabel();simblabel2()"><select onchange="simblabel();simblabel2()"
+            class="selectd" name="temp2" id="temp2">
             <option></option>
             <option>Celsius</option>
             <option>Fahrenheit</option>
+            <option>Kelvin</option>
         </select>
         <br> <br>
         <input id="result" style="width: 50px; margin-left: 80px;" type="number" readonly> <label for="result"
             id="simbres">?</label>
-            <input type="button" onclick="calc()">
+        <input type="button" onclick="calc()">
 
     </form>
 </body>
