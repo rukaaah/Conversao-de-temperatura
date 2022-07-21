@@ -24,8 +24,8 @@
 
                 },
                 Kelvin(y) {
-                    y = parseInt(y)
-                    return (y - 273)
+                    y = parseFloat(y)
+                    return (y - 273.15)
                 }
             }
             //const para calcular o fahrenheit
@@ -39,7 +39,7 @@
                 },
                 Kelvin(y) {
 
-                    return (y - 273) * 1.8 + 32
+                    return (y - 273.15) * 1.8 + 32
                 }
             }
             //const para calcular o kelvin
@@ -48,8 +48,8 @@
                     return ((y - 32) * 5 / 9) + 273
                 },
                 Celsius(y) {
-                    y = parseInt(y)
-                    return (y + 273)
+                    y = parseFloat(y)
+                    return (y + 273.15)
 
                 },
                 Kelvin(y) {
@@ -121,7 +121,7 @@
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simb').innerHTML = "°F"
                     }
-                    if (simbsig == 'KELVIN'){
+                    if (simbsig == 'KELVIN') {
                         document.getElementById('simb').innerHTML = "K"
                     }
                     if (simbsig == '') {
@@ -138,7 +138,7 @@
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simb').innerHTML = "°F"
                     }
-                    if (simbsig == 'KELVIN'){
+                    if (simbsig == 'KELVIN') {
                         document.getElementById('simb').innerHTML = "K"
                     }
                     if (simbsig == '') {
@@ -159,7 +159,7 @@
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simbres').innerHTML = "°F"
                     }
-                    if (simbsig == 'KELVIN'){
+                    if (simbsig == 'KELVIN') {
                         document.getElementById('simbres').innerHTML = "°K"
                     }
                     if (simbsig == '') {
@@ -176,10 +176,10 @@
                     if (simbsig == 'FAHRENHEIT') {
                         document.getElementById('simbres').innerHTML = "°F"
                     }
-                    if (simbsig == 'KELVIN'){
+                    if (simbsig == 'KELVIN') {
                         document.getElementById('simbres').innerHTML = "°K"
                     }
-                    
+
                     if (simbsig == '') {
                         document.getElementById('simbres').innerHTML = "?"
                     }
@@ -194,33 +194,42 @@
 </head>
 
 <body>
-    <h1>Conversão de Temperatura</h1>
+    <div class="bigteste"></div>
+    <div class="centr">
+        <div class="header">
+            <h1 class="texto">Conversão de Temperatura</h1>
+        </div>
+        <form>
+            <br>
+            Insira aqui o primeiro valor:
+            <br>
+            <input type="number" id="valor" name="valor" oninput="rangeva.value=value; calc()"
+                onchange="rangeva.value=value; calc()">
+            <label id="simb" for="valor">?</label><br>
 
-    <form>
-        <input style="width: 50px; margin-left: 80px;" type="number" id="valor" name="valor"
-            oninput="rangeva.value=value" onchange="rangeva.value=value">
-        <label id="simb" for="valor">?</label><br>
-        <input type="range" style="margin-left: 45px;" min="0" max="1000" name="testerange" id="rangeva"
-            oninput="valor.value=value" onchange="valor.value=value"> <br> <br>
-        <select onchange="simblabel();simblabel2()" name="temp1" id="temp1">
-            <option></option>
-            <option>Celsius</option>
-            <option>Fahrenheit</option>
-            <option>Kelvin</option>
-        </select><img id="seta" src="https://www.pngmart.com/files/16/Black-Left-Arrow-Transparent-Background.png"
-            class="arrow" onclick="troca();simblabel();simblabel2()"><select onchange="simblabel();simblabel2()"
-            class="selectd" name="temp2" id="temp2">
-            <option></option>
-            <option>Celsius</option>
-            <option>Fahrenheit</option>
-            <option>Kelvin</option>
-        </select>
-        <br> <br>
-        <input id="result" style="width: 50px; margin-left: 80px;" type="number" readonly> <label for="result"
-            id="simbres">?</label>
-        <input type="button" onclick="calc()">
+            <input type="range" style="width: 80%;" min="0" max="10000" name="testerange" id="rangeva" oninput="valor.value=value; calc()"
+                onchange="valor.value=value; calc()"> <br> <br>
 
-    </form>
+            <select onchange="simblabel();simblabel2();calc()" name="temp1" id="temp1">
+                <option></option>
+                <option>Celsius</option>
+                <option>Fahrenheit</option>
+                <option>Kelvin</option>
+            </select><img id="seta" src="https://www.pngmart.com/files/16/Black-Left-Arrow-Transparent-Background.png"
+                class="arrow" onclick="troca();simblabel();simblabel2()"><select
+                onchange="simblabel();simblabel2();calc()" class="selectd" name="temp2" id="temp2">
+                <option></option>
+                <option>Celsius</option>
+                <option>Fahrenheit</option>
+                <option>Kelvin</option>
+            </select>
+            <br> <br>
+            Resultado:
+            <br>
+            <input id="result" type="number" readonly> <label for="result" id="simbres">?</label>
+
+        </form>
+    </div>
 </body>
 
 </html>
